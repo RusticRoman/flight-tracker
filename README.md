@@ -125,31 +125,31 @@ When calculating the flight path, the expected output includes the full path and
 sequenceDiagram
     participant User
     participant API
-    participant Database
+    participant Memory
 
     User->>API: Generate JWT Token
-    API->>Database: Verify User Credentials
-    Database-->>API: Return Token
+    API->>Memory: Verify User Credentials
+    Memory-->>API: Return Token
     API-->>User: Return JWT Token
 
     User->>API: Add Passenger
-    API->>Database: Store Passenger Details
-    Database-->>API: Return Passenger ID
+    API->>Memory: Store Passenger Details
+    Memory-->>API: Return Passenger ID
     API-->>User: Return Passenger ID
 
     User->>API: Add Flight
-    API->>Database: Store Flight Details
-    Database-->>API: Return Flight ID
+    API->>Memory: Store Flight Details
+    Memory-->>API: Return Flight ID
     API-->>User: Return Flight ID
 
     User->>API: Add Passenger Flight
-    API->>Database: Store Passenger Flight Details
-    Database-->>API: Return Confirmation
+    API->>Memory: Store Passenger Flight Details
+    Memory-->>API: Return Confirmation
     API-->>User: Return Confirmation
 
     User->>API: Calculate Flight Path
-    API->>Database: Retrieve Flight Details
-    Database-->>API: Return Flight Path
+    API->>Memory: Retrieve Flight Details
+    Memory-->>API: Return Flight Path
     API-->>User: Return Optimized Path
 ```
 
