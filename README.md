@@ -114,3 +114,63 @@ When calculating the flight path, the expected output includes the full path and
 }
 ```
 
+
+## Sequence Diagram
+
+
+
+
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant API
+    participant Database
+
+    User->>API: Generate JWT Token
+    API->>Database: Verify User Credentials
+    Database-->>API: Return Token
+    API-->>User: Return JWT Token
+
+    User->>API: Add Passenger
+    API->>Database: Store Passenger Details
+    Database-->>API: Return Passenger ID
+    API-->>User: Return Passenger ID
+
+    User->>API: Add Flight
+    API->>Database: Store Flight Details
+    Database-->>API: Return Flight ID
+    API-->>User: Return Flight ID
+
+    User->>API: Add Passenger Flight
+    API->>Database: Store Passenger Flight Details
+    Database-->>API: Return Confirmation
+    API-->>User: Return Confirmation
+
+    User->>API: Calculate Flight Path
+    API->>Database: Retrieve Flight Details
+    Database-->>API: Return Flight Path
+    API-->>User: Return Optimized Path
+```
+
+
+```mermaid
+classDiagram
+    class Passenger {
+        +String passenger_id
+        +String name
+    }
+    
+    class Flight {
+        +String flight_id
+        +Array full_path
+    }
+    
+    class PassengerFlight {
+        +String passenger_id
+        +String flight_id
+    }
+
+    Passenger "1" -- "1" PassengerFlight : has
+    Flight "1" -- "1" PassengerFlight : has
+```
