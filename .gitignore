@@ -2,7 +2,8 @@
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
 
 .DS_Store
-
+package-lock.json
+package.json.old
 *.iml
 
 ## Directory-based project format:
